@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { user } = useAuth();
   return (
 
     
@@ -16,12 +19,13 @@ function Navbar() {
         </a>
 
         <nav className="navbar__links">
-          <Link to="/home" className="navbar__link navbar__link--active">Home</Link>
+          <Link to="/" className="navbar__link navbar__link--active">Home</Link>
           <Link to="/shop" className="navbar__link">Shop</Link>
           <Link to="/categories" className="navbar__link">Categories</Link>
           <Link to="/deals" className="navbar__link">Deals</Link>
           <Link to="/about" className="navbar__link">About</Link>
           <Link to="/contact" className="navbar__link">Contact</Link>
+          
         </nav>
       
 
@@ -43,12 +47,13 @@ function Navbar() {
             <span className="navbar__badge">3</span>
           </button>
 
-          <button className="navbar__icon-btn" aria-label="User profile">
+          <Link to={user ? "/profile" : "/login"} className="navbar__icon-btn" aria-label="User profile">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
+              
             </svg>
-          </button>
+          </Link>
 
           <button className="navbar__hamburger" aria-label="Open menu">
             <span></span>
