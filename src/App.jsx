@@ -14,6 +14,7 @@ import { Route, Routes } from 'react-router-dom';
 import MainLayout from './Layouts/MainLayout.jsx';
 import AuthLayout from './Layouts/AuthLayout.jsx';
 import Profile from './Pages/profile/Profile.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
   return (
@@ -40,7 +41,11 @@ function App() {
         {/* pages without Navbar and Footer */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+               <Profile />
+            </ProtectedRoute>
+            } />
         </Route>
       </Routes>
       

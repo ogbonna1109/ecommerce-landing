@@ -21,7 +21,7 @@ const login = (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
 };
 
-const logOut =() => {
+const logout =() => {
     setUser(null);
     localStorage.removeItem("user");
 };
@@ -29,7 +29,7 @@ const logOut =() => {
  const value = {
     user,
     login,
-    logOut
+    logout
  }
 
  return(

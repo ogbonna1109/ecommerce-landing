@@ -1,11 +1,11 @@
 import React from 'react'
 import './Profile.css'
-import { useAuth, logOut } from '../../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
 
-    const { user } = useAuth()
+    const { user, logout } = useAuth()
     const navigate = useNavigate();
 
     const handleLogoutChange = (e) => {
